@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag "books" %>
+<div class="container">
+<p id="notice"><%= notice %></p>
+  <div class="col-md-6">
+  <h1>Seus Livros Cadastrados</h1>
+
+  <table class="table-condensed">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Autor</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.name %></td>
+          <td><%= book.author %></td>
+          <td><%= link_to 'Show', book %></td>
+          <td><%= link_to 'Edit', edit_book_path(book) %></td>
+          <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Book', new_book_path %>
+  </div>
+  <div class="col-md-6">
+    <h1>Hora de Sortear sua Próxima leitura!</h1>
+      <%= link_to 'Sortear!', @books.sample %>
+  </div>
+<div>
